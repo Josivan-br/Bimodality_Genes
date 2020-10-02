@@ -1,0 +1,10 @@
+Call:
+survdiff(formula = Surv(OS_MONTHS, OS_STATUS) ~ Pico, data = BIMODAL)
+
+           N    Observed Expected (O-E)^2/E (O-E)^2/V
+Pico=P1  109       49     29.3      13.3      16.7
+Pico=P2  348       98    117.7       3.3      16.7
+
+ Chisq= 16.7  on 1 degrees of freedom, p= 4e-05 
+
+
