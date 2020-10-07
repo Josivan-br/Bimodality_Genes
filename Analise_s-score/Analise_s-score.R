@@ -5,7 +5,7 @@ library(clusterProfiler)
 library(org.Hs.eg.db)
 
 
-setwd("E:/AmostrasKIRC/KIRC_CONT/clusterProfie")
+setwd("E:/ProjetosGit/bimodality_Genes/Analise_s-score")
 
 #################### PRIMEIRO FILTRO FD 2 ############################
 
@@ -112,6 +112,7 @@ Genes_Score <- rbind(Genes_Score, score_tm7sf3_signicative[, c("genename", "scor
 Genes_Score <- Genes_Score[!(duplicated(Genes_Score$genename)),]
 
 Genes_Score <- merge(DESeq2,Genes_Score, by="genename")
+Genes_Score <- Genes_Score[(complete.cases(Genes_Score)),]
 
 write.table(Genes_Score, "Genes_Score_Pv0.01.tsv", quote = F, sep = "\t")
 
@@ -120,7 +121,6 @@ write.table(Genes_Score, "Genes_Score_Pv0.01.tsv", quote = F, sep = "\t")
 library(pheatmap)
 
 genes_significative2 <- Genes_Score
-genes_significative2 <- genes_significative2[(complete.cases(genes_significative2)),]
 
 rownames(genes_significative2) <- genes_significative2$genename
 genes_significative2$genename <- NULL
